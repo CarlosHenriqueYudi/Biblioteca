@@ -1,0 +1,26 @@
+body {
+    font-family: Arial;
+    margin: 0;
+}
+
+h1 {
+    background-color: darkblue;
+    color: white;
+    padding: 20px;
+    margin: 0;
+}
+
+nav {
+    background-color: lightgray;
+    padding: 15px;
+}
+
+nav a {
+    color: black;
+    margin-right: 10px;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: blue;
+}
