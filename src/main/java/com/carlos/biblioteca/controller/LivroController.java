@@ -3,10 +3,8 @@ package com.carlos.biblioteca.controller;
 import com.carlos.biblioteca.model.Livro;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 import java.util.ArrayList;
 
@@ -17,7 +15,8 @@ public class LivroController {
     private List<Livro> livros = new ArrayList<>();
 
     @GetMapping
-    public String inicio() {
+    public String inicio(Model model) {
+        model.addAttribute("livros", livros);
         return "livros/inicio";
     }
 
@@ -26,9 +25,9 @@ public class LivroController {
         livros.add(livro);
         return "redirect:/livros";
     }
-    
+
     @GetMapping("/livro")
-    public String exibirLivro(Model model){
+    public String exibirLivro(Model model) {
 
         Livro livro = new Livro();
         livro.setTitulo("Dom Casmurro");
@@ -37,6 +36,14 @@ public class LivroController {
 
         model.addAttribute("livro", livro);
 
-        return "livro/inicio";
+        return "livros/livro";
+    }
+
+    @PostMapping("/excluir/{indice}")
+    public String excluir(@PathVariable int indice) {
+        if (indice >= 0 && indice < livros.size()) {
+            livros.remove(indice);
+        }
+        return "redirect:/livros";
     }
 }
