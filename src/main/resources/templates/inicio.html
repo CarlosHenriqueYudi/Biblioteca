@@ -1,8 +1,8 @@
-<!doctype html>
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Biblioteca</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" th:href="@{/style.css}">
 </head>
 <body>
 <h1 th:text = "'Sistema de Biblioteca'"></h1>
@@ -14,5 +14,7 @@
     <a th:href = "@{/usuarios}">Usuários</a>
     <a th:href = "@{/emprestimos}">Empréstimos</a>
 </nav>
+<h2>Bem Vindo</h2>
+<a class="botao" th:href = "@{/livros/livro}">Exemplo-Livro</a>
 </body>
 </html>
