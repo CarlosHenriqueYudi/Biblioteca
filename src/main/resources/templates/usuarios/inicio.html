@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Livros</title>
@@ -15,5 +15,28 @@
     <a th:href="@{/emprestimos}">Empréstimos</a>
 </nav>
 <h2>Usuários</h2>
+
+<form th:action="@{/usuarios}" method="post">
+    <input type="text" name="nome" placeholder="Nome">
+    <input type="text" name="CPF" placeholder="CPF">
+    <button type="submit">Cadastrar</button>
+</form>
+
+<table>
+    <tr>
+        <th>Nome</th>
+        <th>CPF</th>
+        <th>Ação</th>
+    </tr>
+    <tr th:each="u, status : ${usuarios}">
+        <td th:text="${u.nome}"></td>
+        <td th:text="${u.CPF}"></td>
+        <td>
+            <form th:action="@{/usuarios/excluir/{i}(i=${status.index})}" method="post">
+                <button type="submit">Excluir</button>
+            </form>
+        </td>
+    </tr>
+</table>
 </body>
 </html>
